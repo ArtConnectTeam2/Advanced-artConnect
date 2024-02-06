@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<select id="select" resultType="boardVO">
+		select * from review
+	</select>
+	
+	<insert id="boardPostOk" parameterType="boardVO">
+
+    	INSERT INTO review(reviewNO, memberID, reviewTitle, reviewContent, reviewDate, reviewFile, reviewHit, starRating, parkingAvailable) 
+    	VALUES(null, #{memberID}, #{reviewTitle}, <![CDATA[#{reviewContent}]]>, now(), #{reviewFile}, 0, #{starRating},
+    	<choose>
+        <when test="parkingAvailable">1</when>
+        <otherwise>0</otherwise>
+    </choose>)
+
+	</insert>
+	
+	<select id="one" parameterType="int" resultType="boardVO">
+		select * from review
+		where reviewNO = #{reviewNO}
+	</select>
+	
+	<delete id="del" parameterType="boardVO">
+		delete from review
+		where reviewNO = #{reviewNO}
+	</delete>
+	
+	<update id="increaseHit">
+    	UPDATE review
+    	SET reviewHit = reviewHit + 1
+    	WHERE reviewNO = #{reviewNO}
+	</update>
+	
+	<update id="boardModifyOk" parameterType="boardVO">
+    UPDATE review
+    SET reviewTitle = #{reviewTitle}, reviewContent = #{reviewContent}
+    WHERE reviewNO = #{reviewNO}
+	</update>
+	
+	<select id="selectWithPaging" parameterType="map" resultType="boardVO">
+    SELECT * FROM review
+    ORDER BY reviewNO DESC
+    LIMIT #{start}, #{size}
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+    SELECT COUNT(*) FROM review
+	</select>
+	
+	 <select id="getRepliesByReviewNo" resultType="com.multi.artConnect.review.ReplyVO">
+        SELECT * FROM reply WHERE reviewNO = #{reviewNO}
+    </select>
+	
+	<update id="updateReply" parameterType="com.multi.artConnect.review.ReplyVO">
+        UPDATE reply
+        SET replyContent = #{replyContent}
+        WHERE replyNO = #{replyNO}
+    </update>
+
+    <delete id="deleteReply" parameterType="com.multi.artConnect.review.ReplyVO">
+        DELETE FROM reply
+        WHERE replyNO = #{replyNO}
+    </delete>
+	
+	<update id="updateFilePath">
+   	 	UPDATE review
+    	SET reviewFile = #{reviewFile}
+    	WHERE reviewNO = #{reviewNO}
+	</update>
+	
+	 <select id="getTotalCountBySearch" resultType="int" parameterType="string">
+        SELECT COUNT(*) FROM review
+        WHERE reviewTitle LIKE CONCAT('%', #{search}, '%')
+           OR reviewContent LIKE CONCAT('%', #{search}, '%');
+    </select>
+
+    <select id="searchWithPaging" resultType="boardVO" parameterType="map">
+        SELECT * FROM review
+        WHERE reviewTitle LIKE CONCAT('%', #{search}, '%')
+           OR reviewContent LIKE CONCAT('%', #{search}, '%')
+        LIMIT #{start}, #{size};
+    </select>
+	
+	
+	
+</mapper>
