@@ -77,6 +77,10 @@ public class BoardDAO {
         params.put("starRating", starRating);
         my.insert("board.insertStarRating", params);
     }
+
+
+}
+
     
     public int getTotalCountBySearch(String search) {
         Map<String, Object> params = new HashMap<>();
@@ -93,4 +97,6 @@ public class BoardDAO {
     }
 
 
+
 }
+

@@ -72,6 +72,7 @@
     	WHERE reviewNO = #{reviewNO}
 	</update>
 	
+
 	 <select id="getTotalCountBySearch" resultType="int" parameterType="string">
         SELECT COUNT(*) FROM review
         WHERE reviewTitle LIKE CONCAT('%', #{search}, '%')
@@ -84,7 +85,7 @@
            OR reviewContent LIKE CONCAT('%', #{search}, '%')
         LIMIT #{start}, #{size};
     </select>
-	
+
 	
 	
 </mapper>
