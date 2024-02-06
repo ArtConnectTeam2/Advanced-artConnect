@@ -21,8 +21,9 @@
 }
 
 .effect-oscar:hover #entrance-text {
-	display: inline;
-	font-size: 70px; 
+
+	display: inline; /* 마우스를 올렸을 때 텍스트를 보이게 합니다 */
+	font-size: 70px; /* 마우스를 올렸을 때 글자 크기를 키웁니다 */
 }
 
 .row2 {
@@ -57,7 +58,9 @@
 					<header>
 
 						<h2>
-							<span>ArtConnet</span> Where Art Meets Souls
+
+							<span>ArtConncet</span> Where Art Meets Souls
+
 						</h2>
 
 					</header>
