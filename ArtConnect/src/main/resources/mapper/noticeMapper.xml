@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+
+	<!-- 공지사항 목록 -->
+	<select id="list" resultType="noticeVO">
+		select * from notice
+		order by noticeNO DESC
+	</select>
+
+	<!-- 공지사항 입력 -->
+	<insert id="insert" parameterType="noticeVO">
+		insert into
+		notice
+		values(
+		null,
+		#{memberID},
+		#{noticeName},
+		#{noticeTitle},
+		#{noticeContent},
+		now(),
+		0
+		)
+	</insert>
+
+	<!-- 공지사항 조회 -->
+	<select id="getpage" parameterType="int" resultType="noticeVO">
+		select noticeNO
+		, noticeTitle
+		, noticeName
+		, noticeContent
+		, noticeHit
+		, noticeRegdate
+		from notice
+		where noticeNO = #{noticeNO}
+	</select>
+
+	<!-- 공지사항 수정 -->
+	<update id="update" parameterType="noticeVO">
+		update notice
+		set
+		noticeTitle = #{noticeTitle},
+		noticeContent = #{noticeContent}
+		where noticeNO = #{noticeNO}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete from notice
+		where noticeNO = #{noticeNO}
+	</delete>
+	
+	<!-- 공지사항 조회수증가 -->
+	<update id="updateHit" parameterType="int">
+		update notice
+		set noticeHit = noticeHit + 1
+		where noticeNO = #{noticeNO}
+	</update>
+	
+	<!-- 공지사항 게시물갯수 -->
+	<select id="getTotalCount" resultType="int">
+		select count(*) 
+		from notice
+	</select>
+	
+	<!-- 공지사항 목록 + 페이징 -->
+	<select id="selectWithPaging" parameterType="hashMap" resultType="noticeVO">
+		select * from notice
+ 		order by noticeNO DESC
+  		limit #{start}, #{size}
+	</select>	
+	
+	<!-- 공지사항 검색 -->
+	<select id="search" parameterType="hashMap" resultType="noticeVO">
+ 		select
+  		noticeNO, memberID, noticeTitle, noticeName
+ 		from notice
+ 		
+ 	<if test='type.equals("subject")'>
+  		WHERE noticeTitle LIKE concat('%', #{keyword}, '%')
+ 	</if>
+ 	
+ 	<if test='type.equals("content")'>
+ 	 	WHERE noticeContent LIKE concat('%', #{keyword}, '%')
+ 	</if>
+ 	
+ 	order by noticeRegdate DESC
+ 	limit 10
+
+	</select>
+
+</mapper>
