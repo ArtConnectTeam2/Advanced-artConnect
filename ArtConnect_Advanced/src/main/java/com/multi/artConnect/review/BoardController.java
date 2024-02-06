@@ -24,6 +24,7 @@ public class BoardController {
 	@Autowired
 	ReplyDAO dao1;
 	
+
     @RequestMapping("review/boardList")
     public String boardList(Model model,
                             @RequestParam(name = "page", defaultValue = "1") int page,

@@ -1,8 +1,11 @@
+
 <%@ page language="java" pageEncoding="UTF-8"%>
+
 <!DOCTYPE HTML>
 <html>
 
 <head>
+
 
     <title>ArtConnect</title>
     <%@ include file="/header.jsp"%>
@@ -52,7 +55,9 @@ th,td {
     align-content: center;
 }
 
+
 </style>
+
 	<script type="text/javascript">
 	$(function() {
 		// 초기 데이터 로딩
@@ -99,6 +104,7 @@ th,td {
 </head>
 
 <body>
+
 <%@ include file="/nav.jsp"%>
     <!-- Main Content -->
     <main role="main-inner-wrapper container">

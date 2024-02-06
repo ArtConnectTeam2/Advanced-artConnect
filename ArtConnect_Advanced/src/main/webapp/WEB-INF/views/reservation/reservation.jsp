@@ -1,11 +1,14 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
+
 <%@ page language="java" pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
+
 <!-- js로 gallery 정보 보내기 -->
 <script>
     let gallery = {
@@ -15,6 +18,7 @@
     let closedDay = '${gallery.closedDay}';
     let closedDays = closedDay.split(', ');
 </script>
+
 <%@ include file="/header.jsp"%>
 <script src="${pageContext.request.contextPath}/resources/js/reservation/calendar.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/reservation/reservation.js"></script>
@@ -24,6 +28,7 @@
 <body>
 	<% String memberID = (String) session.getAttribute("memberID"); %>
 	<%@ include file="/nav.jsp"%>
+
     <div class="thumbnails-pan" style="font-size: 20px;">
 	<h1>예약 페이지</h1> <br>
 	<h2>${gallery.galleryName}</h2> <br>
