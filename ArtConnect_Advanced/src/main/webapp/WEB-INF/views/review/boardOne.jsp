@@ -131,7 +131,9 @@
             <p class="review-content">${board.reviewContent}</p>
             <%-- 파일이 이미지인 경우 이미지 태그로 표시 --%>
             <c:if test="${not empty board.reviewFile}">
-                <img src="${pageContext.request.contextPath}/resources/upload/review/${board.reviewFile}" alt="Attached Image" style="max-width: 100%;">
+
+                <img src="${pageContext.request.contextPath}/resources/upload/review/${board.reviewFile}" alt="Attached Image" style="max-width: 100%; display: block; margin: auto;">
+
             </c:if>
         </div>
     <hr>
@@ -189,5 +191,6 @@
 	<!-- JavaScript -->
 	<%@ include file="/alljs.jsp" %>
 </body>
+
 </html>
 
