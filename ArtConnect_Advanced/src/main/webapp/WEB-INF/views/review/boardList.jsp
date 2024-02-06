@@ -50,7 +50,7 @@
 	<div class="container mt-3">
 	<h1>REVIEW</h1>
 	<hr>
-	
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -77,14 +77,13 @@
 		<td>${board.reviewHit}</td>
 		</tr>
 		</c:forEach>
-		
-		
+
 		</table>
 	</div>
 	<hr>
 	
 	
-	
+
 	<div>
 	<span style="float: right;">
 		<a href="boardPost" type ="button" class="btn btn-primary">글 쓰기</a>
@@ -101,6 +100,7 @@
     </ul>
 </div>
 
+
 	 <!-- 검색 폼 추가 -->
     <div style="text-align: center;">
         <form action="boardList" method="get" class="form-inline">
@@ -110,7 +110,7 @@
             <button type="submit" class="btn btn-primary">검색</button>
         </form>
     </div>
-	
+
 	</main>
 	<!-- Footer -->
 	<footer role="footer" class="bg-light mt-5">

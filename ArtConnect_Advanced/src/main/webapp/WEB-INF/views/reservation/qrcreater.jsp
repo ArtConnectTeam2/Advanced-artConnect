@@ -1,11 +1,17 @@
+
+
 <%@ page import="java.util.Date"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <title>예약 정보 확인</title>
 <%@ include file="/header.jsp"%>
+
 <style>
 
 dl {
@@ -26,7 +32,10 @@ dd {
 	min-width: 900px;
 	max-width: 1000px;
 	margin: 0 auto;
+
+
 	height: 1300px;
+
     border: 1px solid #333333; 
     border-radius: 10px;
     padding: 30px;
@@ -82,6 +91,7 @@ dd {
 </style>
 </head>
 <body>
+
 <%@ include file="/nav.jsp"%>
 		<% String memberID = (String) session.getAttribute("memberID");
 		int reservationID = (Integer) request.getAttribute("reservationID");
