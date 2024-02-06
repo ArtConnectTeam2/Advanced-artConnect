@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- SQL문 정의할 때 VO표현을 간단하게 하고 싶은 경우. 별명을 지어서 사용 -->
+	<typeAliases>
+		<typeAlias type="com.multi.artConnect.member.MemberVO"
+			alias="memberVO"></typeAlias>
+		<typeAlias type="com.multi.artConnect.member.NaverVO"
+			alias="naverVO"></typeAlias>
+		<typeAlias
+			type="com.multi.artConnect.reservation.GalleryVO_reserve"
+			alias="galleryVO_reserve"></typeAlias>
+		<typeAlias type="com.multi.artConnect.review.BoardVO"
+			alias="boardVO"></typeAlias>
+		<typeAlias type="com.multi.artConnect.reservation.ProgramVO"
+			alias="programVO"></typeAlias>
+		<typeAlias
+			type="com.multi.artConnect.reservation.ReservationVO"
+			alias="reservationVO"></typeAlias>
+		<typeAlias type="com.multi.artConnect.notice.NoticeVO"
+			alias="noticeVO"></typeAlias>
+		<typeAlias type="com.multi.artConnect.gallery.GalleryVO"
+			alias="galleryVO"></typeAlias>
+		<typeAlias type="com.multi.artConnect.review.ReplyVO"
+			alias="replyVO"></typeAlias>
+		<typeAlias type="com.multi.artConnect.notice.QnaVO"
+			alias="qnaVO"></typeAlias> 
+		<typeAlias type="com.multi.artConnect.gallery.ProgramVO_gallery" alias="programVO_gallery"></typeAlias>
+		<typeAlias type="com.multi.artConnect.notice.CommentVO" alias="CommentVO"></typeAlias>
+	</typeAliases>
+	<mappers>
+		<!-- SQL문 정의하는 파일들의 목록을 지정. -->
+		<!-- 양민주 -->
+		<mapper resource="mapper/memberMapper.xml" />
+		<mapper resource="mapper/naverMapper.xml" />
+		<!-- 이서영 -->
+		<mapper resource="mapper/boardMapper.xml" />
+		<mapper resource="mapper/replyMapper.xml" />
+		<!-- 장태훈 -->
+		<mapper resource="mapper/galleryMapper.xml" />
+		<mapper resource="mapper/programMapper.xml" />
+		<mapper resource="mapper/reservationMapper.xml" />
+		<!-- 최영태 -->
+		<mapper resource="mapper/gallery.xml" />
+		<mapper resource="mapper/program.xml" />
+		<!-- 강동일 -->
+		<!-- <mapper resource="mapper/notice.xml" />  -->
+		 <mapper resource="mapper/noticeMapper.xml" />  
+		 <mapper resource="mapper/qnaMapper.xml" /> 
+		  <mapper resource="mapper/qnaCommentMapper.xml" /> 
+		<!-- 김소연 -->
+		<mapper resource="mapper/mypageReview.xml" />
+		<mapper resource="mapper/mypageReservation.xml" />
+		<mapper resource="mapper/mypage.xml" />
+
+	</mappers>
+</configuration>
