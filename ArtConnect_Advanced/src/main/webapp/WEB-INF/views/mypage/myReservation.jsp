@@ -2,8 +2,10 @@
 <%@page import="com.multi.artConnect.member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 
 
@@ -186,6 +188,7 @@ p.no-reservation-message {
 		<td style="max-width: 130px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${reservation.programTitle}</td>
 		<%-- <td>${reservation.programTitle}</td> --%>
 		<td><fmt:formatDate value="${reservation.reservationDay}" pattern="yyyy-MM-dd"/> </td>
+
 		<td>${reservation.reservationTime}</td>
 		
 		<td>
