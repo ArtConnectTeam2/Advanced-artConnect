@@ -78,6 +78,7 @@ public class BoardDAO {
         my.insert("board.insertStarRating", params);
     }
 
+
 }
 
     
@@ -94,6 +95,7 @@ public class BoardDAO {
         params.put("size", size);
         return my.selectList("board.searchWithPaging", params);
     }
+
 
 
 }
