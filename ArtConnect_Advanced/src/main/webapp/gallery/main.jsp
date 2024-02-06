@@ -59,6 +59,7 @@
 
 						<h2>
 
+
 							<span>ArtConncet</span> Where Art Meets Souls
 
 						</h2>
