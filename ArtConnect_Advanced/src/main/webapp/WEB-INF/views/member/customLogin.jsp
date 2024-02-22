@@ -82,17 +82,23 @@ button {
 
 			<div class="clearfix"></div>
 
-			<div class="contat-from-wrapper">
+			<div>
 
 
 					<!-- 만약 매퍼 파일에서 매퍼id가 수정되었을 경우 여기도 수정되어야 합니다 -->
-					<form action="login.member" method="post">
+					<form action="/login" method="POST">
 						<h2 align="center">로그인</h2>
-						<label for="memberID">아이디:</label> <input type="text"
-							id="memberID" name="memberID" required placeholder="아이디를 입력하세요"> <label
+						<label for="memberID">아이디:</label> 
+						<input type="text"
+							id="memberID" name="memberID" required placeholder="아이디를 입력하세요" value="admin90"> 
+						<label
 							for="memberPW">비밀번호:</label> <input type="password" id="memberPW"
-							name="memberPW" required placeholder="비밀번호를 입력하세요">
+							name="memberPW" required placeholder="비밀번호를 입력하세요" value="pw90">
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
+						<label><input name="remember-me" type="checkbox">
+						Remeber me
+						</label>
 						<button type="submit">로그인</button>
 						<p>
 							<c:if test="${not empty errorMessage}">

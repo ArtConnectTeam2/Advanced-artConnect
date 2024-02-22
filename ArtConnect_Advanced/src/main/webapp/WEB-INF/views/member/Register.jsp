@@ -75,7 +75,7 @@ input{
 				<h2 align="center">회원가입</h2>
 
 				<label for="id">아이디: (필수)</label> <input type="text" id="memberID"
-					name="memberID" required placeholder="아이디를 입력하세요">
+					name="memberID" required placeholder="아이디를 입력하세요" value="member01">
 
 
 				<!-- 이미 가입된 아이디를 입력했을 경우 에러 메세지 -->
@@ -84,14 +84,14 @@ input{
 				</c:if>
 				<!-- 비밀 번호 -->
 				<label for="pw">비밀번호: (필수)</label> 
-				<input type="password" id="pw" name="memberPW" required placeholder="비밀번호를 입력하세요(8자 이상이며 대문자, 소문자, 특수문자를 포함해야합니다)"> 
+				<input type="password" id="pw" name="memberPW" required placeholder="비밀번호를 입력하세요(8자 이상이며 대문자, 소문자, 특수문자를 포함해야합니다)" value="Asdf1234*"> 
 				<span id="pw_check1" style="color: red;"></span><br> 
 				
 				<label for="pwConfirm">비밀번호 확인: (필수)</label> 
-				<input type="password" id="pwConfirm" name="pwConfirm" required placeholder="비밀번호를 다시 입력하세요"> 
+				<input type="password" id="pwConfirm" name="pwConfirm" required placeholder="비밀번호를 다시 입력하세요" value="Asdf1234*"> 
 				
 				<label for="name">이름: (필수)</label> 
-				<input type="text" id="name" name="memberName" required placeholder="이름을 입력하세요"> 
+				<input type="text" id="name" name="memberName" required placeholder="이름을 입력하세요" value="이용자01"> 
 				
 				<label for="birth">생년월일:(필수)</label> 
 				<input type="date" id="birth" name="memberBirth" required placeholder="생년월일을 선택하세요" min="1950-01-01" max="2020-12-31"> 
@@ -107,9 +107,9 @@ input{
 				
 				<label for="tel">전화번호: (필수)</label> 
 				<input type="tel" id="tel" name="memberTel" required
-					placeholder="전화번호를 입력하세요"> 
+					placeholder="전화번호를 입력하세요" value="010"> 
 				<label for="email">이메일: (필수)</label> 
-				<input type="email" id="email" name="memberEmail" required placeholder="이메일을 입력하세요"> 
+				<input type="email" id="email" name="memberEmail" required placeholder="이메일을 입력하세요" value="123@gmail.com"> 
 				<label for="alarm">알람 설정: (선택)</label> 
 				<select id="alarm" name="memberAlarm">
   					<option value=" ">입력하지않음</option>
@@ -117,7 +117,9 @@ input{
   					<option value="sms">SMS</option>
   					<option value="push">앱 푸시</option>
 				</select>
-
+				
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<input type="hidden" name="auth" value="ROLE_MEMBER" />
 				<button type="submit" onclick="joinMember()">회원가입</button>
 
 
@@ -135,7 +137,7 @@ input{
 
 	<script type="text/javascript">
     function joinMember() {
-        console.log("잘 실행됨");
+        
 
         var pw = document.getElementById("pw").value;
         var pwConfirm = document.getElementById("pwConfirm").value;
