@@ -2,8 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="member">
-	<insert id="insert" parameterType="memberVO">
+<mapper namespace="com.multi.artConnect.mapper.MemberMapper">
+
+	<resultMap type="com.multi.artConnect.member.MemberVO"
+		id="memberMap">
+		<id property="memberID" column="memberID" />
+		<result property="memberID" column="memberID" />
+		<result property="memberPW" column="memberPW" />
+		<result property="memberName" column="memberName" />
+		<result property="regDate" column="regDate" />
+		<result property="updateDate" column="updateDate" />
+		<collection property="authList" resultMap="authMap"></collection>
+
+	</resultMap>
+
+	<resultMap type="com.multi.artConnect.member.AuthVO"
+		id="authMap">
+		<result property="memberID" column="memberID" />
+		<result property="auth" column="auth" />
+	</resultMap>
+
+	<insert id="insert" parameterType="map">
 		insert into member
 		values (
 		#{memberID},
@@ -14,24 +33,35 @@
 		#{memberAddr},
 		#{memberTel},
 		#{memberEmail},
-		#{memberAlarm})
+		#{memberAlarm},
+		#{regDate},
+		#{updateDate},
+		#{enabled}
+		)
 	</insert>
-	
-	 <select id="login" parameterType="memberVO" resultType="memberVO">
-        SELECT * FROM member WHERE BINARY memberID = #{memberID} AND BINARY memberPW = #{memberPW}
-        <!-- 대소문자 구분을 위해 BINARY 사용 -->
-    </select>
-    
-    <!-- 아이디 중복 체크 -->
-    <select id="idCheck" resultType="int">
-    	select count(*) from member
-    	where memberID = #{memberID}
-    </select>
-    
 
-    <!-- 암호화된 비밀번호 확인을 위해 아이디를 통하여 정보 가져오기 -->
-    <select id="getData" parameterType="String" resultType="memberVO">
-    	select * from member WHERE memberID = #{memberID}
-    </select>
+	<insert id="insertAuth" parameterType="map">
+		insert into member_auth
+		(memberID, auth)
+		values (
+		#{memberID},
+		#{auth})
+	</insert>
+
+	<!-- 아이디 중복 체크 -->
+	<select id="idCheck" resultType="int">
+		select count(*) from member
+		where memberID = #{memberID}
+	</select>
+
+
+	<select id="read" resultMap="memberMap">
+		SELECT m.memberID, m.memberPW,
+		m.memberName, m.enabled, m.regdate, m.updatedate, ma.auth
+		FROM member m
+		LEFT OUTER JOIN member_auth ma ON m.memberID = ma.memberID
+		WHERE
+		m.memberID = #{memberID}
+	</select>
 
 </mapper>

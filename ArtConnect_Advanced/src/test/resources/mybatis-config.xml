@@ -8,6 +8,7 @@
 		<!-- 양민주 -->
 		<typeAlias type="com.multi.artConnect.member.MemberVO" alias="memberVO"></typeAlias>
 		<typeAlias type="com.multi.artConnect.member.AuthVO" alias="authVO"></typeAlias>
+		
 		<!-- 장태훈 -->
 		<typeAlias type="com.multi.artConnect.reservation.ProgramVO" alias="programVO"></typeAlias>
 		<typeAlias type="com.multi.artConnect.reservation.ReservationVO" alias="reservationVO"></typeAlias>

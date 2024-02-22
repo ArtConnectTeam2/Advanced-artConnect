@@ -77,7 +77,7 @@
 			<p align="center">환영합니다! 회원가입이 성공적으로 완료되었습니다.</p>
 			<div class="center">
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/member/login">
+					href="${pageContext.request.contextPath}/member/customLogin">
 					<button class="btn-gradient red small">로그인 화면</button>
 				</a>
 				 <a class="navbar-brand" href="${pageContext.request.contextPath}/gallery/main.jsp">

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.multi.artConnect.member.MemberDAO">
+
+	<resultMap type="com.multi.artConnect.member.MemberVO" id="memberMap">
+		<id property="memberID" column="memberID" />
+		<result property="memberID" column="memberID" />
+		<result property="memberPW" column="memberPW" />
+		<result property="memberName" column="userName" />
+		<result property="regDate" column="regDate" />
+		<result property="updateDate" column="updateDate" />
+		<collection property="authList" resultMap="authMap"></collection>
+
+	</resultMap>
+
+    
+
+    <select id="read" resultMap="memberMap">
+		SELECT m.memberID, m.memberPW, m.memberName, m.enabled, m.regdate, m.updatedate, ma.auth
+        FROM member m
+        LEFT OUTER JOIN member_auth ma ON m.memberID = ma.memberID
+        WHERE m.memberID = #{memberID}
+	</select>
+
+</mapper>

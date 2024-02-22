@@ -1,6 +1,7 @@
 package com.multi.artConnect.member;
 
 import java.sql.Date;
+import java.util.List;
 
 public class MemberVO {
 	private String memberID;
@@ -11,7 +12,30 @@ public class MemberVO {
 	private String memberAddr;
 	private String memberTel;
 	private String memberEmail;
+	private boolean enabled;
 	
+	private java.util.Date regDate;
+	private java.util.Date updateDate;
+	private List<AuthVO> authList;
+	
+	public java.util.Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(java.util.Date regDate) {
+		this.regDate = regDate;
+	}
+	public java.util.Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(java.util.Date updateDate) {
+		this.updateDate = updateDate;
+	}
+	public List<AuthVO> getAuthList() {
+		return authList;
+	}
+	public void setAuthList(List<AuthVO> authList) {
+		this.authList = authList;
+	}
 	
 	public String getMemberEmail() {
 		return memberEmail;
@@ -71,12 +95,22 @@ public class MemberVO {
 		this.memberAlarm = memberAlarm;
 	}
 	
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 	@Override
 	public String toString() {
-		return "LoginVO [memberID=" + memberID + ", memberPW=" + memberPW + ", memberName=" + memberName
+		return "MemberVO [memberID=" + memberID + ", memberPW=" + memberPW + ", memberName=" + memberName
 				+ ", memberBirth=" + memberBirth + ", memberGender=" + memberGender + ", memberAddr=" + memberAddr
-				+ ", memberTel=" + memberTel + ", memberEmail=" + memberEmail + ", memberAlarm=" + memberAlarm + "]";
+				+ ", memberTel=" + memberTel + ", memberEmail=" + memberEmail + ", regDate=" + regDate + ", updateDate="
+				+ updateDate + ", authList=" + authList + ", memberAlarm=" + memberAlarm + "]";
 	}
+	
+	
 	
 	
 	
