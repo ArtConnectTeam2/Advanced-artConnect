@@ -105,7 +105,7 @@ button {
 								<span style="color: red;">${errorMessage}</span>
 							</c:if> <br>
 							회원이 아니신가요? <a
-								href="${pageContext.request.contextPath}/member/register">회원가입</a>
+								href="${pageContext.request.contextPath}/member/ReigsterChoice.jsp">회원가입</a>
 						</p>
 					</form>
 				</div>
