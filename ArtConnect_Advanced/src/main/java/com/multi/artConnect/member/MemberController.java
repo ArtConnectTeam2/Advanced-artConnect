@@ -9,17 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/member")
 @Log4j
 public class MemberController {
-	
+
 	private final Logger log = LoggerFactory.getLogger(MemberController.class);
-	
+
 	@Autowired
 	private MemberService memberService;
 
@@ -28,15 +26,20 @@ public class MemberController {
 	public String showLoginForm() {
 		return "/member/customLogin";
 	}
-	
 
-	// 회원가입페이지로 넘어가기
+	// 개인 회원가입페이지로 넘어가기
 	@GetMapping("/register")
 	public String showRegisterForm() {
 		return "member/Register";
 	}
 
-	//회원가입 시 사용하는 메서드
+	// 관계자 회원가입페이지로 넘어가기
+	@GetMapping("/partnerRegister")
+	public String showPartnerRegisterForm() {
+		return "member/PartnerRegister";
+	}
+
+	// 회원가입 시 사용하는 메서드
 	@RequestMapping("/insert.member")
 	public String insert(MemberVO memberVO, AuthVO authVO, Model model, HttpServletRequest request) {
 		try {
