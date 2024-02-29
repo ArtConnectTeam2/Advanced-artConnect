@@ -22,7 +22,7 @@
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="#" class="nav__logo">Bedimcode</a>
+                    <a href="${pageContext.request.contextPath}/gallery/main.jsp" class="nav__logo">ArtConnect</a>
                 </div>
                 <div class="nav__list">
                     <a href="#" class="nav__link active">

@@ -10,12 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.multi.artConnect.member.MemberVO;
 
-import lombok.Setter;
-
 import com.multi.artConnect.mapper.MemberMapper;
 import com.multi.artConnect.member.CustomUser;
-import com.multi.artConnect.member.MemberDAO;
-import com.multi.artConnect.member.MemberService;
 
 
 @Service

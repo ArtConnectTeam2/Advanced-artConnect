@@ -18,6 +18,14 @@ public class MemberVO {
 	private java.util.Date updateDate;
 	private List<AuthVO> authList;
 	
+	public boolean hasRole(String role) {
+		for (AuthVO auth : authList) {
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public java.util.Date getRegDate() {
 		return regDate;
 	}
