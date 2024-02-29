@@ -6,86 +6,81 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 
-<style>
-  /* 사이드바 래퍼 스타일 */
-  
-  #page-wrapper {
-    padding-left: 250px;
-  }
-  
-  #sidebar-wrapper {
-    position: fixed;
-    width: 250px;
-    height: 100%;
-    margin-left: -250px;
-    background: #000;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  
-  #page-content-wrapper {
-    width: 100%;
-    padding: 20px;
-  }
-  /* 사이드바 스타일 */
-  
-  .sidebar-nav {
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .sidebar-nav li {
-    text-indent: 1.5em;
-    line-height: 2.8em;
-  }
-  
-  .sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999;
-  }
-  
-  .sidebar-nav li a:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  .sidebar-nav > .sidebar-brand {
-    font-size: 1.3em;
-    line-height: 3em;
-  }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/styleAdmin.css">
 
-<div id="page-wrapper">
-  <!-- 사이드바 -->
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a href="#">관리자 페이지</a>
-      </li>
-      <li><a href="#">메뉴 1</a></li>
-      <li><a href="#">메뉴 2</a></li>
-      <li><a href="#">메뉴 3</a></li>
-      <li><a href="#">메뉴 4</a></li>
-      <li><a href="#">메뉴 5</a></li>
-      <li><a href="#">메뉴 6</a></li>
-      <li><a href="#">메뉴 7</a></li>
-      <li><a href="#">메뉴 8</a></li>
-      <li><a href="#">메뉴 9</a></li>
-    </ul>
-  </div>
-  <!-- /사이드바 -->
+    <title>SideBar sub menus</title>
+</head>
 
-  <!-- 본문 -->
-  <div id="page-content-wrapper">
-    <div class="container-fluid">
-      <h1>간단한 사이드바</h1>
-      <p>메뉴가 많아서 한 페이지를 넘으면 세로 스크롤바 생김</p>
+<body id="body-pd">
+    <div class="l-navbar" id="navbar">
+        <nav class="nav">
+            <div>
+                <div class="nav__brand">
+                    <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                    <a href="#" class="nav__logo">Bedimcode</a>
+                </div>
+                <div class="nav__list">
+                    <a href="#" class="nav__link active">
+                        <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">Dashboard</span>
+                    </a>
+                    <a href="#" class="nav__link">
+                        <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">Messenger</span>
+                    </a>
+
+                    <div href="#" class="nav__link collapse">
+                        <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">Projects</span>
+
+                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                        <ul class="collapse__menu">
+                            <a href="#" class="collapse__sublink">Data</a>
+                            <a href="#" class="collapse__sublink">Group</a>
+                            <a href="#" class="collapse__sublink">Members</a>
+                        </ul>
+                    </div>
+
+                    <a href="#" class="nav__link">
+                        <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">Analytics</span>
+                    </a>
+
+                    <div href="#" class="nav__link collapse">
+                        <ion-icon name="people-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">Team</span>
+
+                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                        <ul class="collapse__menu">
+                            <a href="#" class="collapse__sublink">Data</a>
+                            <a href="#" class="collapse__sublink">Group</a>
+                            <a href="#" class="collapse__sublink">Members</a>
+                        </ul>
+                    </div>
+
+                    <a href="#" class="nav__link">
+                        <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">Settings</span>
+                    </a>
+                </div>
+                <a href="#" class="nav__link">
+                    <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+                    <span class="nav_name">Log out</span>
+                </a>
+            </div>
+        </nav>
     </div>
-  </div>
-  <!-- /본문 -->
-</div>
+
+    <!-- IONICONS -->
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <!-- JS -->
+    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+</body>
 
