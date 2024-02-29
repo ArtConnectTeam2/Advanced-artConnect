@@ -1,6 +1,8 @@
 package com.multi.artConnect.member;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -36,5 +38,9 @@ public class MemberService {
         return result;
     }
     
+    // 회원 목록 불러오기
+    public List<MemberVO> findAll() {
+		return memberDAO.findAll();
+	}
     
 }

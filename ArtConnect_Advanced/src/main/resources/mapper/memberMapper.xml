@@ -63,5 +63,9 @@
 		WHERE
 		m.memberID = #{memberID}
 	</select>
-
+	
+	<select id="findAll" resultType="com.multi.artConnect.member.MemberVO">
+		select * from member 
+	</select>
+	
 </mapper>

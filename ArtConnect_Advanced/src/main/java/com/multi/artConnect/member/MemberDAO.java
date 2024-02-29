@@ -1,5 +1,7 @@
 package com.multi.artConnect.member;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,5 +37,9 @@ public class MemberDAO {
 		return my.selectOne(Mapper + "getData", memberID);
 	}
 	
-
+	
+	//회원관리 페이지에서 회원정보 전체 불러오기
+	public List<MemberVO> findAll() {
+	    return my.selectList(Mapper + "findAll");
+	}
 }

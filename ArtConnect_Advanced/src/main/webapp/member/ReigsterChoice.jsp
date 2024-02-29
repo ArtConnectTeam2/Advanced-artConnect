@@ -79,7 +79,7 @@
 					<div class="card-body d-flex flex-column align-items-center">
 						<!-- 클래스 추가 -->
 						<h5 class="card-title">미술관 관계자 회원가입</h5>
-						<a href="${pageContext.request.contextPath}/member/partnerRegister" class="btn btn-secondary">가입하기</a>
+						<a href="${pageContext.request.contextPath}/member/register" class="btn btn-secondary">가입하기</a>
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,7 @@
 package com.multi.artConnect.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +17,9 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/member")
 @Log4j
 public class MemberController {
-
+	
 	private final Logger log = LoggerFactory.getLogger(MemberController.class);
-
+	
 	@Autowired
 	private MemberService memberService;
 
@@ -26,20 +28,15 @@ public class MemberController {
 	public String showLoginForm() {
 		return "/member/customLogin";
 	}
+	
 
-	// 개인 회원가입페이지로 넘어가기
+	// 회원가입페이지로 넘어가기
 	@GetMapping("/register")
 	public String showRegisterForm() {
 		return "member/Register";
 	}
 
-	// 관계자 회원가입페이지로 넘어가기
-	@GetMapping("/partnerRegister")
-	public String showPartnerRegisterForm() {
-		return "member/PartnerRegister";
-	}
-
-	// 회원가입 시 사용하는 메서드
+	//회원가입 시 사용하는 메서드
 	@RequestMapping("/insert.member")
 	public String insert(MemberVO memberVO, AuthVO authVO, Model model, HttpServletRequest request) {
 		try {
@@ -57,6 +54,16 @@ public class MemberController {
 			e.printStackTrace();
 			return "/member/Register";
 		}
+	}
+	
+	@RequestMapping("/admin/allMember")
+	public String findAll(Model model) {
+	    
+		List<MemberVO> memberVOList = memberService.findAll();
+	    
+		model.addAttribute("memberList", memberVOList);
+	    
+		return "/admin/allMember";
 	}
 
 }
