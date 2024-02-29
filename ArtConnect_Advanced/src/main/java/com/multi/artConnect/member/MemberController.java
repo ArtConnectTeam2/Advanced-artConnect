@@ -40,7 +40,7 @@ public class MemberController {
 	@RequestMapping("/insert.member")
 	public String insert(MemberVO memberVO, AuthVO authVO, Model model, HttpServletRequest request) {
 		try {
-			/* 이 부분에서 깃 충돌 발생 */
+			
 			System.out.println("회원가입 성공: " + memberVO.toString());
 			System.out.println("권한 부여됨: " + authVO.toString());
 			memberService.insert(memberVO, authVO);

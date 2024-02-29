@@ -5,6 +5,9 @@ public class AuthVO {
 	private String memberID;
 	private String auth;
 	
+	public boolean isRole(String role) {
+		return auth.equals("ROLE_" + role.toUpperCase()); 
+	}
 
 	public String getMemberID() {
 		return memberID;

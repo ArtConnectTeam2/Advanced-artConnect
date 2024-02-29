@@ -10,6 +10,7 @@
 		<result property="memberID" column="memberID" />
 		<result property="memberPW" column="memberPW" />
 		<result property="memberName" column="memberName" />
+		<result property="memberEmail" column="memberEmail" />
 		<result property="regDate" column="regDate" />
 		<result property="updateDate" column="updateDate" />
 		<collection property="authList" resultMap="authMap"></collection>
@@ -64,8 +65,11 @@
 		m.memberID = #{memberID}
 	</select>
 	
-	<select id="findAll" resultType="com.multi.artConnect.member.MemberVO">
-		select * from member 
+	<select id="findAll" resultMap="memberMap">
+		select * from member m
+		left outer join member_auth ma on m.memberID = ma.memberID
 	</select>
+	
+	
 	
 </mapper>

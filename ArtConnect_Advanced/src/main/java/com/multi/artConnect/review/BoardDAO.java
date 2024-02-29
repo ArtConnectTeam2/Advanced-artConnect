@@ -78,7 +78,7 @@ public class BoardDAO {
         my.insert("board.insertStarRating", params);
     }
 
-}
+
 
     
     public int getTotalCountBySearch(String search) {
