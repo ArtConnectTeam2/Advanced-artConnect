@@ -30,6 +30,8 @@
 						<th scope="col">가입 날짜</th>
 						<th scope="col">마지막 업데이트 날짜</th>
 						<th scope="col">부여된 권한</th>
+						<th scope="col">변경할 권한</th>
+						<th scope="col">변경하기</th>
 
 					</tr>
 				</thead>
@@ -43,7 +45,18 @@
 							<td><fmt:formatDate value="${member.updateDate}" pattern="yyyy년 MM월 dd일" /></td>
 							<td><c:forEach var="auth" items="${member.authList}"> ${auth.auth}</c:forEach>
 							</td>
-
+							<td>
+                                <select name="role">
+                                    <option value="ROLE_MEMBER">ROLE_MEMBER</option>
+                                    <option value="ROLE_PARTNER">ROLE_PARTNER</option>
+                                    <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+                                </select>
+                            </td>
+                             <td>
+                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                    업데이트
+                                </button>
+                            </td>
 						</tr>
 					</c:forEach>
 					<form action="/customLogout" method="post">
