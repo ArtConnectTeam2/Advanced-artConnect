@@ -1,4 +1,5 @@
 
+
 <%@ page import="java.util.Date"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
@@ -6,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 
 <title>예약 정보 확인</title>
 <%@ include file="/header.jsp"%>
@@ -31,6 +33,7 @@ dd {
 	max-width: 1000px;
 	margin: 0 auto;
 
+
 	height: 1300px;
 
     border: 1px solid #333333; 
@@ -38,7 +41,6 @@ dd {
     padding: 30px;
     background-color: white;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-
     margin-bottom: 200px;
 }
 

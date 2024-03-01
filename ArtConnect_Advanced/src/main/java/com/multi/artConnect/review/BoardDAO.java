@@ -79,7 +79,6 @@ public class BoardDAO {
     }
 
 
-
     
     public int getTotalCountBySearch(String search) {
         Map<String, Object> params = new HashMap<>();
@@ -94,6 +93,7 @@ public class BoardDAO {
         params.put("size", size);
         return my.selectList("board.searchWithPaging", params);
     }
+
 
 
 }

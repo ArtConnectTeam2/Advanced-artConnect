@@ -6,6 +6,7 @@
 <html>
 <head>
 
+
 <title>전시 목록 페이지</title>
 <%@ include file="/header.jsp"%>
 
