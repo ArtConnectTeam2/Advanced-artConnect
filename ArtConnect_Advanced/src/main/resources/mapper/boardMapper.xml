@@ -85,7 +85,6 @@
            OR reviewContent LIKE CONCAT('%', #{search}, '%')
         LIMIT #{start}, #{size};
     </select>
-	
 
 	
 	
