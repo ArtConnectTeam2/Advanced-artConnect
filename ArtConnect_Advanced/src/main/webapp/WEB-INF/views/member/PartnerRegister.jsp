@@ -6,8 +6,9 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
-<title>회원 가입 페이지</title>
+<title>관계자 회원 가입 페이지</title>
 <%@ include file="/header.jsp"%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberValidation.js"></script>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -73,10 +74,14 @@ input{
 			<form action="insert.member" method="post" name="joinForm"
 				onsubmit="return joinMember();">
 				<h2 align="center">회원가입</h2>
-
+				
+				<label for="corp">사업자 등록번호 확인</label>
+				<input type="text" name="corp_reg" id="corp_reg" value=""/>
+				<input type="button" name="corp_button" id="corp_button" value="확 인" onclick="corp_chk();">
+				<p id="checkCorpMsg"></p>
 				<label for="id">아이디: (필수)</label> <input type="text" id="memberID"
 					name="memberID" required placeholder="아이디를 입력하세요" value="member01">
-
+				
 
 				<!-- 이미 가입된 아이디를 입력했을 경우 에러 메세지 -->
 				<c:if test="${not empty errorMessage}">
@@ -93,15 +98,7 @@ input{
 				<label for="name">이름: (필수)</label> 
 				<input type="text" id="name" name="memberName" required placeholder="이름을 입력하세요" value="이용자01"> 
 				
-				<label for="birth">생년월일:(필수)</label> 
-				<input type="date" id="birth" name="memberBirth" required placeholder="생년월일을 선택하세요" min="1950-01-01" max="2020-12-31"> 
-				<label for="gender">성별: (선택)</label> 
-				<select id="gender" name="memberGender">
-					<option value=" ">입력하지않음</option>
-					<option value="M">남성</option>
-					<option value="F">여성</option>
-
-				</select> 
+				
 				<label for="addr">주소: (선택)</label> 
 				<input type="text" id="addr" name="memberAddr" placeholder="주소를 입력하세요"> 
 				
@@ -119,7 +116,7 @@ input{
 				</select>
 				
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<input type="hidden" name="auth" value="ROLE_MEMBER" />
+				<input type="hidden" name="auth" value="ROLE_PARTNER" />
 				<button type="submit" onclick="joinMember()">회원가입</button>
 
 
@@ -130,69 +127,10 @@ input{
 	<!-- footer -->
 	<%@ include file="/footer.jsp"%>
 
-
 	<!-- JavaScript -->
 	<%@ include file="/alljs.jsp"%>
-
-
-	<script type="text/javascript">
-    function joinMember() {
-        
-
-        var pw = document.getElementById("pw").value;
-        var pwConfirm = document.getElementById("pwConfirm").value;
-        var pwErroMessage1 = document.getElementById("pw_check1");
-        
-        // 비밀번호가 비어있을 경우 조건 체크를 하지 않음
-        if (pw.trim() === "") {
-            pwErroMessage1.innerHTML = "";
-        } else {
-            var pwreg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-
-            if (!pwreg.test(pw)) {
-                pwErroMessage1.innerHTML = "비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.";
-                alert("비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.");
-                return false;
-            } else {
-                pwErroMessage1.innerHTML = "";
-            }
-        }
-
-        // 비밀번호 확인
-        if (pw !== pwConfirm) {
-            alert("비밀번호가 일치하지 않습니다.");
-            return false;
-        }
-
-        // 필수 입력 필드 체크
-        var requiredFields = ["memberID", "memberPW", "pwConfirm", "memberName", "memberBirth", "memberTel", "memberEmail"];
-        for (var i = 0; i < requiredFields.length; i++) {
-            var fieldId = requiredFields[i];
-            var fieldValue = document.getElementById(fieldId).value.trim();
-
-            if (fieldValue === "") {
-                alert("필수 입력 항목을 모두 입력하세요.");
-                return false;
-            }
-        }
-
-        // 모든 조건을 통과하면 회원가입 실행
-        return true;
-    }
-
-    function submitForm() {
-        // 생년월일 필드 값 가져오기
-        var birthValue = document.getElementById("birth").value;
-
-        // 값이 비어있는 경우 null로 설정
-        if (birthValue.trim() === "") {
-            document.getElementById("birth").value = null;
-        }
-
-        // 나머지 폼 데이터를 서버에 전송 또는 폼 submit 로직 수행
-        document.forms["joinForm"].submit();
-    }
-</script>
+	
+	
 
 
 </body>

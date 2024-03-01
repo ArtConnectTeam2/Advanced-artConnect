@@ -79,8 +79,6 @@ public class BoardDAO {
     }
 
 
-}
-
     
     public int getTotalCountBySearch(String search) {
         Map<String, Object> params = new HashMap<>();
