@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 
 <div class="custom-header">
 	<!-- 로고 -->
@@ -11,19 +13,17 @@
 		</a>
 	</div>
 
-	<!-- 로그인 버튼 -->
-	<%
-		if (session.getAttribute("memberID") == null) {
-	%>
+	
+	<sec:authorize access="isAnonymous()">
 	<div class="login" style="display: inline-block;">
-		<a href="${pageContext.request.contextPath}/member/login">
-			<button class="btn btn-danger" onclick="login()">로그인</button>
+		 <a href="${pageContext.request.contextPath}/member/customLogin">
+        <button class="btn btn-danger">로그인</button>
 		</a>
 	</div>
-	<%
-		} else {
-	%>
+	</sec:authorize>
 
+	
+	<sec:authorize access="isAuthenticated()">
 	<!-- 로그아웃 버튼 -->
 	<div class="login" style="display: inline-block;">
 		<a href="${pageContext.request.contextPath}/member/Logout.jsp">
@@ -35,12 +35,10 @@
 			src="${pageContext.request.contextPath}/resources/img/member/mymy.png">
 		</a> <br>
 		<span class="customer" >
-		<%=session.getAttribute("memberName")%>님
+		<sec:authentication property="principal.member.memberName"/>님
 		</span>
 	</div>
-	<%
-		}
-	%>
+	</sec:authorize>
 </div>
 
 <!-- header -->
