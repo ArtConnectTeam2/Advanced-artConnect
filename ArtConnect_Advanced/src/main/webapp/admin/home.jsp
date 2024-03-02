@@ -16,8 +16,8 @@
 	<!-- 본문 -->
 	<div id="page-content-wrapper">
 		<div class="container-fluid">
-			<a href="/member/admin/allMember">회원목록 조회</a>
-			
+			<a href="/member/admin/allMember">회원목록 조회</a> <br>
+			<a href="/mail/admin/mailSend">메일 보내기</a>
 			
 		</div>
 	</div>
