@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/mail/*")
@@ -64,6 +65,7 @@ public class MailController {
 	}
 	
 	@RequestMapping("admin/emailAuth")
+	@ResponseBody
 	public String emailAuth(String memberEmail) {
 		Random random = new Random();
 		int chekNum = random.nextInt(888888) + 111111;

@@ -8,8 +8,7 @@
 <head>
 <title>회원 가입 페이지</title>
 <%@ include file="/header.jsp"%>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/member/memberJoin.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberJoin.js"></script>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -77,8 +76,8 @@ input {
 				onsubmit="return joinMember();">
 				<h2 align="center">회원가입</h2>
 
-				<label for="id">아이디: (필수)</label> <input type="text" id="memberID"
-					name="memberID" required placeholder="아이디를 입력하세요" value="member01">
+				<label for="memberID">아이디: (필수)</label> <input type="text" id="memberID"
+					name="memberID" required placeholder="아이디를 입력하세요" value="member03">
 
 
 				<!-- 이미 가입된 아이디를 입력했을 경우 에러 메세지 -->
@@ -93,9 +92,10 @@ input {
 
 				<label for="pwConfirm">비밀번호 확인: (필수)</label> <input type="password"
 					id="pwConfirm" name="pwConfirm" required
-					placeholder="비밀번호를 다시 입력하세요" value="Asdf1234*"> <label
-					for="name">이름: (필수)</label> <input type="text" id="name"
-					name="memberName" required placeholder="이름을 입력하세요" value="이용자01">
+					placeholder="비밀번호를 다시 입력하세요" value="Asdf1234*"> 
+				<label for="name">이름: (필수)</label> 
+				<input type="text" id="name"
+					name="memberName" required placeholder="이름을 입력하세요" value="이용자03">
 
 				<label for="birth">생년월일:(필수)</label> <input type="date" id="birth"
 					name="memberBirth" required placeholder="생년월일을 선택하세요"
@@ -105,16 +105,22 @@ input {
 					<option value="M">남성</option>
 					<option value="F">여성</option>
 
-				</select> <label for="addr">주소: (선택)</label> <input type="text" id="addr"
-					name="memberAddr" placeholder="주소를 입력하세요"> <label for="tel">전화번호:
-					(필수)</label> <input type="tel" id="tel" name="memberTel" required
-					placeholder="전화번호를 입력하세요" value="010"> <label for="email">이메일:
-					(필수)</label> <input type="email" id="email" name="memberEmail" required
-					placeholder="이메일을 입력하세요" value="123@gmail.com">
-				<button type="button" id=emailAuthBtn class="emailAuthBtn">인증번호
-					받기</button>
+				</select> 
+				<label for="addr">주소: (선택)</label> 
+				<input type="text" id="addr"
+					name="memberAddr" placeholder="주소를 입력하세요"> 
+				<label for="tel">전화번호:(필수)</label> 
+				<input type="tel" id="tel" name="memberTel" required
+					placeholder="전화번호를 입력하세요" value="010"> 
+				<label for="email">이메일: (필수)</label> 
+				<input type="email" id="email" name="memberEmail" required
+					placeholder="이메일을 입력하세요" value="yangju12388@gmail.com">
+				<button type="button" id=emailAuthBtn class="emailAuthBtn">인증번호 받기</button> <br>
+				<hr>
+					<label >인증번호 입력</label>
+					<input type="text" placeholder="인증번호 입력" id="emailAuthKey">
 				<br>
-
+					
 
 				<hr>
 				<label for="alarm">알람 설정: (선택)</label> <select id="alarm"
@@ -123,11 +129,12 @@ input {
 					<option value="email">이메일</option>
 					<option value="sms">SMS</option>
 					<option value="push">앱 푸시</option>
-				</select> <input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" /> <input type="hidden" name="auth"
+				</select> 
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+				<input type="hidden" name="auth"
 					value="ROLE_MEMBER" />
 				<button type="submit" onclick="joinMember()">회원가입</button>
-
+						
 
 			</form>
 		</div>
@@ -140,62 +147,6 @@ input {
 	<!-- JavaScript -->
 	<%@ include file="/alljs.jsp"%>
 	
-	<script type="text/javascript">
-	 /** 
-	  *회원가입 처리
-	  */
-	  function joinMember() {
-	        
-
-	        var pw = document.getElementById("pw").value;
-	        var pwConfirm = document.getElementById("pwConfirm").value;
-	        var pwErroMessage1 = document.getElementById("pw_check1");
-	        
-	        // 비밀번호가 비어있을 경우 조건 체크를 하지 않음
-	        if (pw.trim() === "") {
-	            pwErroMessage1.innerHTML = "";
-	        } else {
-	            var pwreg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-
-	            if (!pwreg.test(pw)) {
-	                pwErroMessage1.innerHTML = "비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.";
-	                alert("비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.");
-	                return false;
-	            } else {
-	                pwErroMessage1.innerHTML = "";
-	            }
-	        }
-
-	       
-
-	      	if($('#memberID').val() == ""){
-				alert("아이디를 입력해주세요.");
-				return false;
-			}
-	      	
-	      	if($('#password').val() == ""){
-				alert("비밀번호를 입력해주세요.");
-				return false;
-			}
-	      	
-	      	 // 비밀번호 확인
-	        if (pw !== pwConfirm) {
-	            alert("비밀번호가 일치하지 않습니다.");
-	            return false;
-	        }
-	      	 
-	        if($('#email_auth_key').val() != email_auth_cd){
-				alert("인증번호가 일치하지 않습니다.");
-				return false;
-			}
-
-	        // 모든 조건을 통과하면 회원가입 실행
-	        return true;
-	    }
-
-	  
-	    
-	   
-	</script>
+	
 </body>
 </html>
