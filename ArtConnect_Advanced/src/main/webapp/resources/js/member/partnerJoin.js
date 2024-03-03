@@ -1,3 +1,6 @@
+  /** 
+  *회원가입 처리
+  */
   function joinMember() {
         
 
