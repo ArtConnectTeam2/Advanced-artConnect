@@ -8,7 +8,7 @@
 <head>
 <title>관계자 회원 가입 페이지</title>
 <%@ include file="/header.jsp"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberValidation.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/partnerJoin.js"></script>
 <style>
 body {
 	font-family: Arial, sans-serif;

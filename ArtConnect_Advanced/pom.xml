@@ -178,7 +178,7 @@
 			<version>1.18.0</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- security 관련 dependency -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -210,7 +210,26 @@
 			<version>5.0.1.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<!-- 구글 email을 보내기위한 라이브러리 -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version> 
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
