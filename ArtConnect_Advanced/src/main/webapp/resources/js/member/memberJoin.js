@@ -76,15 +76,15 @@
 			    
 			   $.ajax({
 			        type: "POST",
-			        url : "/admin/emailAuth",
-			        data: {email: email},
+			        url : "/mail/emailAuth",
+			        data: {memberEmail: email},
 			        success: function(data) {
 			            alert("인증번호가 발송되었습니다.");
 			            emailAuthCd = data;
 			        },
-			        error: function(data) {
-			            alert("메일발송 실패했습니다");
-			        }
+			         error: function(jqXHR, textStatus, errorThrown) {
+        				alert("메일 발송에 실패했습니다.\nHTTP 상태 코드: " + jqXHR.status + "\n에러: " + errorThrown);
+    				}
 			    })
 			})
 	})
