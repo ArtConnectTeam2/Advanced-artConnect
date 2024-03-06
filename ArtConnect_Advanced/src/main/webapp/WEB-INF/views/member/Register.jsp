@@ -97,11 +97,12 @@ input {
 				<input type="text" id="name"
 					name="memberName" required placeholder="이름을 입력하세요" value="이용자03">
 
-				<label for="birth">생년월일:(필수)</label> 
-				<input type="date" id="birth" name="memberBirth" required placeholder="생년월일을 선택하세요"
+				<label for="birth">생년월일:(필수)</label> <input type="date" id="birth"
+					name="memberBirth" required placeholder="생년월일을 선택하세요"
 					min="1950-01-01" max="2020-12-31"> 
-				<label for="gender">성별:
-					(선택)</label> <select id="gender" name="memberGender">
+				
+				<label for="gender">성별:(선택)</label> 
+				<select id="gender" name="memberGender">
 					<option value=" ">입력하지않음</option>
 					<option value="M">남성</option>
 					<option value="F">여성</option>
@@ -109,20 +110,26 @@ input {
 				</select> 
 				<label for="addr">주소: (선택)</label> 
 				<input type="text" id="addr"
-					name="memberAddr" placeholder="주소를 입력하세요"> 
+					name="memberAddr" placeholder="주소">
+				<input type="text" id="extraAddr"
+					name="memberAddr" placeholder="상세주소">
+				<button type="button" onclick="selectAddr()">주소 선택하기</button> <br>
+				<hr>
+				
 				<label for="tel">전화번호:(필수)</label> 
 				<input type="tel" id="tel" name="memberTel" required
 					placeholder="전화번호를 입력하세요" value="010"> 
+				
 				<label for="email">이메일: (필수)</label> 
 				<input type="email" id="email" name="memberEmail" required
 					placeholder="이메일을 입력하세요" value="yangju12388@gmail.com">
-				
 				<button type="button" id=emailAuthBtn class="emailAuthBtn">인증번호 받기</button> <br>
 				<hr>
 					<label >인증번호 입력</label>
 					<input type="text" placeholder="인증번호 입력" id="emailAuthKey">
 				<br>
 					
+
 				<hr>
 				<label for="alarm">알람 설정: (선택)</label> <select id="alarm"
 					name="memberAlarm">
@@ -147,7 +154,9 @@ input {
 
 	<!-- JavaScript -->
 	<%@ include file="/alljs.jsp"%>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
+
 	
 </body>
 </html>
