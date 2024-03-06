@@ -35,9 +35,9 @@
 		#{memberTel},
 		#{memberEmail},
 		#{memberAlarm},
-		#{regDate},
-		#{updateDate},
-		#{enabled}
+		Now(),
+		Now(),
+		1
 		)
 	</insert>
 
