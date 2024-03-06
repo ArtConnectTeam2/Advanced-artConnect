@@ -64,14 +64,14 @@ public class MailController {
 		return "/admin/mailSend";
 	}
 	
-	@RequestMapping("admin/emailAuth")
+	@RequestMapping("/emailAuth")
 	@ResponseBody
 	public String emailAuth(String memberEmail) {
 		Random random = new Random();
 		int chekNum = random.nextInt(888888) + 111111;
 		
 		// 이메일 보내기
-		String setForm = "이메일을 입력해주세요";
+		String setForm = "artConnect222@gmail.com";
 		String toMail = memberEmail;
 		String title = "회원가입 인증 이메일입니다";
 		String content = 
