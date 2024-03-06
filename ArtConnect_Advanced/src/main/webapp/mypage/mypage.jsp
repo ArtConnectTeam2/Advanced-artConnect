@@ -9,7 +9,7 @@
 %>
         <script>
             alert("로그인을 먼저 해주세요.");
-            window.location.href = "<%= request.getContextPath() %>/member/login";
+            window.location.href = "<%= request.getContextPath() %>/member/customLogin";
         </script>
 <%
     } else {

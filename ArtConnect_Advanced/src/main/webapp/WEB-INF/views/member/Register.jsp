@@ -97,9 +97,10 @@ input {
 				<input type="text" id="name"
 					name="memberName" required placeholder="이름을 입력하세요" value="이용자03">
 
-				<label for="birth">생년월일:(필수)</label> <input type="date" id="birth"
-					name="memberBirth" required placeholder="생년월일을 선택하세요"
-					min="1950-01-01" max="2020-12-31"> <label for="gender">성별:
+				<label for="birth">생년월일:(필수)</label> 
+				<input type="date" id="birth" name="memberBirth" required placeholder="생년월일을 선택하세요"
+					min="1950-01-01" max="2020-12-31"> 
+				<label for="gender">성별:
 					(선택)</label> <select id="gender" name="memberGender">
 					<option value=" ">입력하지않음</option>
 					<option value="M">남성</option>
@@ -115,13 +116,13 @@ input {
 				<label for="email">이메일: (필수)</label> 
 				<input type="email" id="email" name="memberEmail" required
 					placeholder="이메일을 입력하세요" value="yangju12388@gmail.com">
+				
 				<button type="button" id=emailAuthBtn class="emailAuthBtn">인증번호 받기</button> <br>
 				<hr>
 					<label >인증번호 입력</label>
 					<input type="text" placeholder="인증번호 입력" id="emailAuthKey">
 				<br>
 					
-
 				<hr>
 				<label for="alarm">알람 설정: (선택)</label> <select id="alarm"
 					name="memberAlarm">
