@@ -2,8 +2,6 @@ package com.multi.artConnect.review;
 
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class BoardVO {
 	private int reviewNO;
 	private String memberID;
