@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
+@MapperScan(basePackages = {"com.multi.artConnect.mapper"})
 public class RootConfig {
 
 	@Autowired
@@ -28,7 +30,6 @@ public class RootConfig {
 		hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/project");
 		hikariConfig.setUsername("root");
 		hikariConfig.setPassword("1234");
-		// 다른 구성도 추가할 수 있습니다. 예를 들어, 커넥션 풀 크기, 최대 활성 연결 수 등
 
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 
@@ -41,7 +42,7 @@ public class RootConfig {
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setConfigLocation(applicationContext.getResource("classpath:/mybatis-config.xml"));
 		sessionFactory.setMapperLocations(
-				new PathMatchingResourcePatternResolver().getResources("classpath:mapper/**/*.xml"));
+				new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
 		return sessionFactory.getObject();
 
 	}
