@@ -20,11 +20,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
-import org.springframework.security.web.session.SessionInformationExpiredStrategy;
-
 import com.multi.artConnect.security.CustomAccessDeniedHandler;
 import com.multi.artConnect.security.CustomLoginSuccessHandler;
-import com.multi.artConnect.security.CustomSessionExpiredStrategy;
 import com.multi.artConnect.security.CustomUserDetailsService;
 
 @Configuration
@@ -59,10 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new CustomLoginSuccessHandler();
     }
    
-    @Bean
-    public SessionInformationExpiredStrategy customSessionExpiredStrategy() {
-    	return new CustomSessionExpiredStrategy();
-    }
+
 
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
@@ -74,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        		.antMatchers("/login").not().fullyAuthenticated()
+        		.antMatchers("/member/customLogin").not().fullyAuthenticated()
                 .antMatchers("/oauth2/**","/login").permitAll()
                 .antMatchers("/mypage/mypage.jsp").access("hasRole('ROLE_MEMBER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
@@ -100,12 +94,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().ignoringAntMatchers("/admin/emailAuth"); // CSRF 무시 대상 URL 설정
         
-        http.sessionManagement()
-        		.sessionFixation().changeSessionId()
-        		.maximumSessions(1)
-        		.expiredSessionStrategy(customSessionExpiredStrategy())
-        		.maxSessionsPreventsLogin(false)
-        		.sessionRegistry(sessionRegistry());
+     
     }	
     
     @Bean
