@@ -3,12 +3,15 @@ package com.multi.artConnect.config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,9 +19,12 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 
 import com.multi.artConnect.security.CustomAccessDeniedHandler;
 import com.multi.artConnect.security.CustomLoginSuccessHandler;
+import com.multi.artConnect.security.CustomSessionExpiredStrategy;
 import com.multi.artConnect.security.CustomUserDetailsService;
 
 @Configuration
@@ -52,6 +58,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationSuccessHandler customLoginSuccessHandler() {
         return new CustomLoginSuccessHandler();
     }
+   
+    @Bean
+    public SessionInformationExpiredStrategy customSessionExpiredStrategy() {
+    	return new CustomSessionExpiredStrategy();
+    }
 
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
@@ -63,7 +74,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login").permitAll()
+        		.antMatchers("/login").not().fullyAuthenticated()
+                .antMatchers("/oauth2/**","/login").permitAll()
                 .antMatchers("/mypage/mypage.jsp").access("hasRole('ROLE_MEMBER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .and()
@@ -87,6 +99,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .accessDeniedHandler(customAccessDeniedHandler())
                 .and()
                 .csrf().ignoringAntMatchers("/admin/emailAuth"); // CSRF 무시 대상 URL 설정
-    }
+        
+        http.sessionManagement()
+        		.sessionFixation().changeSessionId()
+        		.maximumSessions(1)
+        		.expiredSessionStrategy(customSessionExpiredStrategy())
+        		.maxSessionsPreventsLogin(false)
+        		.sessionRegistry(sessionRegistry());
+    }	
+    
+    @Bean
+	public SessionRegistry sessionRegistry() {
+	    return new SessionRegistryImpl();
+	}
+	
+	@Bean
+	public static ServletListenerRegistrationBean<HttpSessionEventPublisher> httpSessionEventPublisher() {
+	    return new ServletListenerRegistrationBean<>(new HttpSessionEventPublisher());
+	}
 }
 
