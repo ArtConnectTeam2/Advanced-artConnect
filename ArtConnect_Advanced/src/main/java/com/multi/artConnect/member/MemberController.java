@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,11 @@ public class MemberController {
 
 	// 커스텀 로그인 페이지로 넘어가기
 	@GetMapping("/customLogin")
-	public String showLoginForm() {
+	public String showLoginForm(Authentication auth) {
+		if (auth != null && auth.isAuthenticated()) {
+			return "/mypage/mypage.jsp";
+			
+		}
 		return "/member/customLogin";
 	}
 	
