@@ -45,17 +45,18 @@
 									pattern="yyyy년 MM월 dd일" /></td>
 							<td><fmt:formatDate value="${member.updateDate}"
 									pattern="yyyy년 MM월 dd일" /></td>
-							<td><c:forEach var="auth" items="${member.authList}"> ${auth.auth}</c:forEach>
+							<td><c:forEach var="auth" items="${member.authList}">${auth.auth}</c:forEach>
 							</td>
 							<td>
-								<form action="/member/updateRole" method="post">
-									<select name="role">
+								<form action="/member/updateRole" method="post" class="d-flex">
+									<select name="auth" class="form-control mr-2">
 										<option value="ROLE_MEMBER">ROLE_MEMBER</option>
 										<option value="ROLE_PARTNER">ROLE_PARTNER</option>
 										<option value="ROLE_ADMIN">ROLE_ADMIN</option>
-									</select> 
-									<input type="hidden" name="memberId" value="${member.memberID}">
-									<button class="btn btn-outline-dark flex-shrink-0" type="submit">업데이트</button>
+									</select> <input type="hidden" name="memberID"
+										value="${member.memberID}">
+									<button class="btn btn-outline-dark flex-shrink-0"
+										type="submit">업데이트</button>
 								</form>
 							</td>
 						</tr>
@@ -65,6 +66,7 @@
 							name="${_csrf.parameterName}" value="${_csrf.token}" />
 					</form>
 				</tbody>
+
 			</table>
 		</div>
 	</div>

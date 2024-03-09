@@ -20,13 +20,18 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler{
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		
-		log.error("Access Denied Handler");
-		
-		log.error("Redirect.....");
-		
-		
-		
-		response.sendRedirect("/gallery/main.jsp");
+		// 요청된 URL과 메소드 정보 로깅
+        String requestedUrl = request.getRequestURI();
+        String method = request.getMethod();
+        String userIP = request.getRemoteAddr(); // 사용자 IP 주소
+        
+        log.error("Access Denied Handler");       
+        log.error("Redirect.....");
+        
+        // AccessDeniedException의 메시지도 함께 로그에 남길 수 있습니다.
+        log.error("Error Message: " + accessDeniedException.getMessage());
+        
+        response.sendRedirect("/gallery/main.jsp");
 		
 	}
 	
