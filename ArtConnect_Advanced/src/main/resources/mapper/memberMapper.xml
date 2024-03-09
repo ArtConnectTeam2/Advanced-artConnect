@@ -70,6 +70,8 @@
 		left outer join member_auth ma on m.memberID = ma.memberID
 	</select>
 	
-	
+	<update id="updateRole" parameterMap="authMap">
+		update member_auth set auth = #{role} where memberID = #{memberID}
+	</update>
 	
 </mapper>
