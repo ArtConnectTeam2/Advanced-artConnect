@@ -92,7 +92,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                     .accessDeniedHandler(customAccessDeniedHandler())
                 .and()
-                .csrf().ignoringAntMatchers("/admin/emailAuth"); // CSRF 무시 대상 URL 설정
+                .csrf().ignoringAntMatchers("/admin/emailAuth", "/member/updateRole"); // CSRF 무시 대상 URL 설정
         
      
     }	

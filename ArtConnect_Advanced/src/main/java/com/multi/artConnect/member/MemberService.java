@@ -1,7 +1,9 @@
 package com.multi.artConnect.member;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,7 +47,10 @@ public class MemberService {
 	}
     
     // 회원 권한 업데이트
-    public void updateRole(String memberID, String role) {
-		memberDAO.updateRole(memberID, role);
+    public void updateRole(String memberID, String auth) {
+    	 Map<String, Object> params = new HashMap<>();
+         params.put("memberID", memberID);
+         params.put("auth", auth);
+         memberDAO.updateRole(params);
 	}
 }
