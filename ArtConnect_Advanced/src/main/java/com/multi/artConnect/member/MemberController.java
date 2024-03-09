@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.extern.log4j.Log4j;
 
@@ -61,5 +62,10 @@ public class MemberController {
 		model.addAttribute("memberList", memberVOList);    
 		return "/admin/allMember";
 	}
-
+	
+	@RequestMapping("/updateRole")
+	public String updateRole(String memberID, String role) {
+		memberService.updateRole(memberID, role);
+		return "redirect:/admin/allMember";
+	}
 }
