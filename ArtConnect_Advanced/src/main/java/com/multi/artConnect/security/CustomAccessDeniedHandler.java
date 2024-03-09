@@ -26,7 +26,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler{
 		
 		
 		
-		response.sendRedirect("/accessError");
+		response.sendRedirect("/gallery/main.jsp");
 		
 	}
 	
