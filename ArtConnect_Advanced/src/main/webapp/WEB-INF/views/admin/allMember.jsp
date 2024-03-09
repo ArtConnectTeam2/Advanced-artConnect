@@ -41,22 +41,23 @@
 							<th scope="row">${member.memberID}</th>
 							<td>${member.memberName}</td>
 							<td>${member.memberEmail}</td>
-							<td><fmt:formatDate value="${member.regDate}" pattern="yyyy년 MM월 dd일" /></td>
-							<td><fmt:formatDate value="${member.updateDate}" pattern="yyyy년 MM월 dd일" /></td>
+							<td><fmt:formatDate value="${member.regDate}"
+									pattern="yyyy년 MM월 dd일" /></td>
+							<td><fmt:formatDate value="${member.updateDate}"
+									pattern="yyyy년 MM월 dd일" /></td>
 							<td><c:forEach var="auth" items="${member.authList}"> ${auth.auth}</c:forEach>
 							</td>
 							<td>
-                                <select name="role">
-                                    <option value="ROLE_MEMBER">ROLE_MEMBER</option>
-                                    <option value="ROLE_PARTNER">ROLE_PARTNER</option>
-                                    <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-                                </select>
-                            </td>
-                             <td>
-                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
-                                    업데이트
-                                </button>
-                            </td>
+								<form action="/member/updateRole" method="post">
+									<select name="role">
+										<option value="ROLE_MEMBER">ROLE_MEMBER</option>
+										<option value="ROLE_PARTNER">ROLE_PARTNER</option>
+										<option value="ROLE_ADMIN">ROLE_ADMIN</option>
+									</select> 
+									<input type="hidden" name="memberId" value="${member.memberID}">
+									<button class="btn btn-outline-dark flex-shrink-0" type="submit">업데이트</button>
+								</form>
+							</td>
 						</tr>
 					</c:forEach>
 					<form action="/customLogout" method="post">
