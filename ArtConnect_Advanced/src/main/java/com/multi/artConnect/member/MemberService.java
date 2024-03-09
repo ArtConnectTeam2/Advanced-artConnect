@@ -44,4 +44,8 @@ public class MemberService {
 		return memberDAO.findAll();
 	}
     
+    // 회원 권한 업데이트
+    public void updateRole(String memberID, String role) {
+		memberDAO.updateRole(memberID, role);
+	}
 }
