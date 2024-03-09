@@ -42,4 +42,9 @@ public class MemberDAO {
 	public List<MemberVO> findAll() {
 	    return my.selectList(Mapper + "findAll");
 	}
+	
+	//회원 권한 업데이트
+	public void updateRole(String memberID, String role) {
+		my.update(Mapper + "updateRole");
+	}
 }
