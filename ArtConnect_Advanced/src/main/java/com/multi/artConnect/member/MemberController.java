@@ -28,7 +28,6 @@ public class MemberController {
 	public String showLoginForm() {
 		return "/member/customLogin";
 	}
-	
 
 	// 회원가입페이지로 넘어가기
 	@GetMapping("/register")
@@ -39,8 +38,7 @@ public class MemberController {
 	//회원가입 시 사용하는 메서드
 	@RequestMapping("/insert.member")
 	public String insert(MemberVO memberVO, AuthVO authVO, Model model, HttpServletRequest request) {
-		try {
-			
+		try {	
 			System.out.println("회원가입 성공: " + memberVO.toString());
 			System.out.println("권한 부여됨: " + authVO.toString());
 			memberService.insert(memberVO, authVO);
@@ -59,10 +57,8 @@ public class MemberController {
 	@RequestMapping("/admin/allMember")
 	public String findAll(Model model) {
 	    
-		List<MemberVO> memberVOList = memberService.findAll();
-	    
-		model.addAttribute("memberList", memberVOList);
-	    
+		List<MemberVO> memberVOList = memberService.findAll();	    
+		model.addAttribute("memberList", memberVOList);    
 		return "/admin/allMember";
 	}
 
