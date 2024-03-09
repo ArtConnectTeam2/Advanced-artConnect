@@ -23,27 +23,5 @@
 		<typeAlias type="com.multi.artConnect.notice.QnaVO" alias="qnaVO"></typeAlias>
 		<typeAlias type="com.multi.artConnect.notice.CommentVO" alias="CommentVO"></typeAlias>
 	</typeAliases>
-	<!-- <mappers>
-		양민주
-		<mapper resource="mapper/memberMapper.xml" />
-		이서영
-		<mapper resource="mapper/boardMapper.xml" />
-		<mapper resource="mapper/replyMapper.xml" />
-		장태훈
-		<mapper resource="mapper/galleryMapper.xml" />
-		<mapper resource="mapper/programMapper.xml" />
-		<mapper resource="mapper/reservationMapper.xml" />
-		최영태
-		<mapper resource="mapper/gallery.xml" />
-		<mapper resource="mapper/program.xml" />
-		강동일
-		<mapper resource="mapper/noticeMapper.xml" />
-		<mapper resource="mapper/qnaMapper.xml" />
-		<mapper resource="mapper/qnaCommentMapper.xml" />
-		김소연
-		<mapper resource="mapper/mypageReview.xml" />
-		<mapper resource="mapper/mypageReservation.xml" />
-		<mapper resource="mapper/mypage.xml" />
 
-	</mappers> -->
 </configuration>
