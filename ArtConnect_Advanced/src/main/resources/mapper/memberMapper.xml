@@ -64,6 +64,7 @@
 		WHERE
 		m.memberID = #{memberID}
 	</select>
+<<<<<<< HEAD
 
 	<select id="findAll" resultMap="memberMap">
 		select * from member m
@@ -75,4 +76,16 @@
 		update member_auth set auth = #{auth} where memberID = #{memberID}
 	</update>
 
+=======
+	
+	<select id="findAll" resultMap="memberMap">
+		select * from member m
+		left outer join member_auth ma on m.memberID = ma.memberID
+	</select>
+	
+	<update id="updateRole" parameterMap="authMap">
+		update member_auth set auth = #{role} where memberID = #{memberID}
+	</update>
+	
+>>>>>>> b9feca09ea434016c41ac72334d4fa5829fd8ef4
 </mapper>
