@@ -8,6 +8,6 @@
 </head>
 <body>
 <%@ include file="/sidebar.jsp"%>
-요청사항
+요청사항 입니다
 </body>
 </html>
