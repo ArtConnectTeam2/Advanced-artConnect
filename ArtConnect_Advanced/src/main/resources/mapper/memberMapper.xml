@@ -65,16 +65,14 @@
 		m.memberID = #{memberID}
 	</select>
 
-	<update id="updateRole" parameterType="map">
-		update member_auth set auth = #{auth} where memberID = #{memberID}
-	</update>
-
 	<select id="findAll" resultMap="memberMap">
 		select * from member m
 		left outer
 		join member_auth ma on m.memberID = ma.memberID
 	</select>
 
+	<update id="updateRole" parameterType="map">
+		update member_auth set auth = #{auth} where memberID = #{memberID}
 	</update>
 
 </mapper>
