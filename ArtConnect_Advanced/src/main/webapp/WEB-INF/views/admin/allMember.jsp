@@ -66,6 +66,7 @@
 							name="${_csrf.parameterName}" value="${_csrf.token}" />
 					</form>
 				</tbody>
+
 			</table>
 		</div>
 	</div>
