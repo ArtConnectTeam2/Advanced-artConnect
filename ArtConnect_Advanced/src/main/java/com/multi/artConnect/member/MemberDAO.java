@@ -1,7 +1,7 @@
 package com.multi.artConnect.member;
 
 import java.util.List;
-
+import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -44,7 +44,7 @@ public class MemberDAO {
 	}
 	
 	//회원 권한 업데이트
-	public void updateRole(String memberID, String role) {
-		my.update(Mapper + "updateRole");
+	public void updateRole(Map<String, Object> params) {
+		my.update(Mapper + "updateRole", params);
 	}
 }

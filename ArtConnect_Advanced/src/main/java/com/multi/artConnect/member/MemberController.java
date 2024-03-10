@@ -64,8 +64,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/updateRole")
-	public String updateRole(String memberID, String role) {
-		memberService.updateRole(memberID, role);
-		return "redirect:/admin/allMember";
+	public String updateRole(String memberID, String auth) {
+		log.info("역할 업데이트 시작: 회원 ID = {}, 역할 = {}", memberID, auth);
+	        try {
+	            memberService.updateRole(memberID, auth);
+	            log.info("역할 업데이트 성공: 회원 ID = {}, 역할 = {}", memberID, auth);
+	        } catch (Exception e) {
+	        	log.error("역할 업데이트 실패: 회원 ID = {}", memberID, e);
+	        }
+	        return "redirect:/member/admin/allMember";
 	}
 }
