@@ -19,11 +19,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler{
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
-		
-		// 요청된 URL과 메소드 정보 로깅
-        String requestedUrl = request.getRequestURI();
-        String method = request.getMethod();
-        String userIP = request.getRemoteAddr(); // 사용자 IP 주소
+
         
         log.error("Access Denied Handler");       
         log.error("Redirect.....");
