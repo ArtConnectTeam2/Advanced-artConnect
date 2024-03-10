@@ -25,7 +25,7 @@
                     <a href="${pageContext.request.contextPath}/gallery/main.jsp" class="nav__logo">ArtConnect</a>
                 </div>
                 <div class="nav__list">
-                    <a href="#" class="nav__link active">
+                    <a href="${pageContext.request.contextPath}/admin/home.jsp" class="nav__link active">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">Dashboard</span>
                     </a>
