@@ -10,6 +10,10 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.PostMapping;
+>>>>>>> 658059d27690ec0cef0d1fc39f03196832237382
 import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.extern.log4j.Log4j;
 
@@ -62,4 +66,16 @@ public class MemberController {
 		return "/admin/allMember";
 	}
 
+	
+	@RequestMapping("/updateRole")
+	public String updateRole(String memberID, String auth) {
+		log.info("역할 업데이트 시작: 회원 ID = {}, 역할 = {}", memberID, auth);
+	        try {
+	            memberService.updateRole(memberID, auth);
+	            log.info("역할 업데이트 성공: 회원 ID = {}, 역할 = {}", memberID, auth);
+	        } catch (Exception e) {
+	        	log.error("역할 업데이트 실패: 회원 ID = {}", memberID, e);
+	        }
+	        return "redirect:/member/admin/allMember";
+	}
 }
