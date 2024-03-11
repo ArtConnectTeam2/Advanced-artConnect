@@ -12,6 +12,6 @@ public interface MemberMapper {
 	public void insert(MemberVO memberVO, AuthVO authVO);
 	
 	public List<MemberVO> findAll(); 
-	
+
 	public void updateRole(String memberID, String role);
 }

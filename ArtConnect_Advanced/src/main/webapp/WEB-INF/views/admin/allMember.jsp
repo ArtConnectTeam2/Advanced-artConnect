@@ -41,6 +41,7 @@
 							<th scope="row">${member.memberID}</th>
 							<td>${member.memberName}</td>
 							<td>${member.memberEmail}</td>
+
 							<td><fmt:formatDate value="${member.regDate}"
 									pattern="yyyy년 MM월 dd일" /></td>
 							<td><fmt:formatDate value="${member.updateDate}"
